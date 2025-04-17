@@ -8,7 +8,7 @@ export interface Product {
   title: string;
 }
 
-type typeRating = {
+export type typeRating = {
   rate: number;
   count: number;
 };
