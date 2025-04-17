@@ -1,23 +1,47 @@
-import Link from "next/link";
-import { memo } from "react";
+"use client";
+
+import { getCategories } from "@/request/products";
+import { memo, useEffect, useState } from "react";
+import Container from "react-bootstrap/esm/Container";
+import Nav from "react-bootstrap/esm/Nav";
+import NavDropdown from "react-bootstrap/esm/NavDropdown";
 import Navbar from "react-bootstrap/Navbar";
 
 export const NavbarCustom = () => {
-  const routes = [
-    {
-      href: "/",
-      className: "navbar-brand",
-      text: "FakeStore",
-    },
-  ];
+  const [categories, setCategories] = useState<string[]>([]);
+  const _getCategories = async () => {
+    const data = await getCategories();
+    setCategories(() => data);
+  };
+
+  useEffect(() => {
+    _getCategories();
+  }, []);
   return (
     <>
-      <Navbar bg="light" className="px-4 d-flex justify-content-between">
-        {routes.map(({ href, className, text }) => (
-          <Link key={href} href={href} className={className ?? ""}>
-            {text}
-          </Link>
-        ))}
+      <Navbar fixed="top" expand="lg" className="bg-body-tertiary">
+        <Container fluid>
+          <Navbar.Brand href="/">FakeStore</Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav
+              className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: "100px" }}
+              navbarScroll
+            >
+              <NavDropdown title="Categorias" id="navbarScrollingDropdown">
+                {categories.length > 0 &&
+                  categories?.map((category) => (
+                    <>
+                      <NavDropdown.Item href={`/category/${category}`}>
+                        {category}
+                      </NavDropdown.Item>
+                    </>
+                  ))}
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
       </Navbar>
     </>
   );
