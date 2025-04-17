@@ -1,9 +1,9 @@
-
-
 import type { Metadata } from "next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@/styles/_theme.scss";
 import ThemeToggle from "@/components/atoms/ThemeToggle";
+import { NavbarCustom } from "@/components/molecules/Navbar";
+import Container from "react-bootstrap/Container";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <NavbarCustom />
+        <Container className="py-4">{children}</Container>
         <ThemeToggle />
       </body>
     </html>
