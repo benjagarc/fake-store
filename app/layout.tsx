@@ -1,6 +1,9 @@
+
+
 import type { Metadata } from "next";
 import "bootstrap/dist/css/bootstrap.min.css";
-import '@/styles/_theme.scss';
+import "@/styles/_theme.scss";
+import ThemeToggle from "@/components/atoms/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <ThemeToggle />
+      </body>
     </html>
   );
 }
