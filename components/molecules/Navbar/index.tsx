@@ -9,13 +9,13 @@ import Navbar from "react-bootstrap/Navbar";
 
 export const NavbarCustom = () => {
   const [categories, setCategories] = useState<string[]>([]);
-  const _getCategories = async () => {
-    const data = await getCategories();
-    setCategories(() => data);
-  };
-
   useEffect(() => {
-    _getCategories();
+    const fetchCategories = async () => {
+      const data = await getCategories();
+      setCategories(data);
+    };
+
+    fetchCategories();
   }, []);
   return (
     <>
@@ -32,11 +32,12 @@ export const NavbarCustom = () => {
               <NavDropdown title="Categorias" id="navbarScrollingDropdown">
                 {categories.length > 0 &&
                   categories?.map((category) => (
-                    <>
-                      <NavDropdown.Item href={`/category/${category}`}>
-                        {category}
-                      </NavDropdown.Item>
-                    </>
+                    <NavDropdown.Item
+                      key={category}
+                      href={`/category/${category}`}
+                    >
+                      {category}
+                    </NavDropdown.Item>
                   ))}
               </NavDropdown>
             </Nav>
