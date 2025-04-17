@@ -16,3 +16,8 @@ export const getAllProducts = async (): Promise<Product[]> => {
   });
   return handleResponse(response);
 };
+
+export const getCategories = async () => {
+  const response = await fetch(`${API_URL}/products/categories`);
+  return handleResponse(response);
+};
