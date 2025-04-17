@@ -1,3 +1,4 @@
+'use client';
 import { Product } from "./interface";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
