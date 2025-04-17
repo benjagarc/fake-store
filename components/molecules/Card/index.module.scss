@@ -21,6 +21,15 @@
   }
 }
 
+.cardTitle {
+  max-height: 4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 .cardDescription {
   font-size: 0.875rem;
   color: var(--text);

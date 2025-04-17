@@ -26,7 +26,9 @@ export const CardProduct: FC<Product> = ({
               <Card.Img src={image} alt={title} />
             </div>
             <Card.Body className={`${styles.bodyBetween}`}>
-              <Card.Title className="fs-6">{title}</Card.Title>
+              <Card.Title className={`fs-6 ${styles.cardTitle}`}>
+                {title}
+              </Card.Title>
               <Card.Text className={`${styles.cardDescription} mb-2`}>
                 {description}
               </Card.Text>
