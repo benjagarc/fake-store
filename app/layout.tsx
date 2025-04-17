@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NavbarCustom />
-        <Container className="py-4">{children}</Container>
+        <Container className="py-4 pt-5 mt-5">{children}</Container>
         <ThemeToggle />
       </body>
     </html>
