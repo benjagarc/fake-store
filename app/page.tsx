@@ -9,14 +9,14 @@ import Card from "@/components/molecules/Card";
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const _getProducts = async () => {
-    const data = await getAllProducts();
-    setProducts(() => data);
-    setLoading((prev) => !prev);
-  };
 
   useEffect(() => {
-    _getProducts();
+    const getData = async () => {
+      const data = await getAllProducts();
+      setProducts(() => data);
+      setLoading((prev) => !prev);
+    };
+    getData();
   }, []);
 
   return (
