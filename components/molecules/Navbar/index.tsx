@@ -6,6 +6,7 @@ import Container from "react-bootstrap/esm/Container";
 import Nav from "react-bootstrap/esm/Nav";
 import NavDropdown from "react-bootstrap/esm/NavDropdown";
 import Navbar from "react-bootstrap/Navbar";
+import styles from "./index.module.scss";
 
 export const NavbarCustom = () => {
   const [categories, setCategories] = useState<string[]>([]);
@@ -19,7 +20,7 @@ export const NavbarCustom = () => {
   }, []);
   return (
     <>
-      <Navbar fixed="top" expand="lg" className="bg-body-tertiary">
+      <Navbar fixed="top" expand="lg" className={`bg-body-tertiary ${styles.customNavbar}`}>
         <Container fluid>
           <Navbar.Brand href="/">FakeStore</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />

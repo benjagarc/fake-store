@@ -1,0 +1,14 @@
+.customNavbar {
+  background-color: var(--card) !important;
+  & > div div {
+    background-color: var(--card) !important;
+  }
+  & > div > a,
+  & > div div > a {
+    color: var(--text) !important;
+  }
+
+  & > div div > a:hover {
+    background: var(--bg);
+  }
+}
