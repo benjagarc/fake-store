@@ -28,7 +28,9 @@ body {
   color: #fff;
   border: none;
 
-  &:hover {
-    background-color: var(--accent-hover);
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--accent-hover) !important;
   }
 }
