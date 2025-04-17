@@ -6,14 +6,17 @@ import Card from "@/components/molecules/Card";
 import { Params } from "./types";
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { category } = await params;
   return {
-    title: `${params.category} | Fake Store`,
+    title: `${category} | Fake Store`,
   };
 }
 
 export default async function CategoryPage({ params }: Params) {
+  const { category } = await params;
+
   const response = await fetch(
-    `https://fakestoreapi.com/products/category/${params.category}`,
+    `https://fakestoreapi.com/products/category/${category}`,
     {
       next: { revalidate: 60 },
     }
@@ -25,7 +28,7 @@ export default async function CategoryPage({ params }: Params) {
 
   return (
     <div>
-      <h1 className="mb-4 text-capitalize">{params.category}</h1>
+      <h1 className="mb-4 text-capitalize">{category}</h1>
       <Row xs={2} sm={2} md={3} lg={4} className="g-4">
         {products.map((product) => (
           <Card key={product?.id} {...product} />
