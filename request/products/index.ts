@@ -21,3 +21,14 @@ export const getCategories = async () => {
   const response = await fetch(`${API_URL}/products/categories`);
   return handleResponse(response);
 };
+
+export const updateProductById = async (id: number | string, body: string) => {
+  const response = await fetch(`${API_URL}/products/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body,
+  });
+  return handleResponse(response);
+};
