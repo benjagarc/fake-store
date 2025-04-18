@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@/styles/_theme.scss";
 import ThemeToggle from "@/components/atoms/ThemeToggle";
-import { NavbarCustom } from "@/components/molecules/Navbar";
+import CustomNavbar from "@/components/molecules/Navbar";
 import Container from "react-bootstrap/Container";
 import { ModalProvider } from "@/components/context";
 
@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ModalProvider>
-          <NavbarCustom />
+          <CustomNavbar />
           <Container className="py-4 pt-5 mt-5">{children}</Container>
           <ThemeToggle />
         </ModalProvider>
