@@ -14,11 +14,13 @@ import { validationSchemaEdit } from "./schema";
 import { deleteProductById, updateProductById } from "@/request/products";
 import MessageModal from "@/components/molecules/MessageModal";
 import { useToast } from "@/components/context/Toast";
+import { useRouter } from "next/navigation";
 
 export const ProductInformation: FC<Product> = (product) => {
   const { showModal, hideModal } = useModal();
   const { showToast } = useToast();
   const [updatedProduct, setUpdatedProduct] = useState<Product>(product);
+  const router = useRouter();
 
   const displayForm = () => {
     showModal(
@@ -57,6 +59,7 @@ export const ProductInformation: FC<Product> = (product) => {
           try {
             await deleteProductById(updatedProduct.id);
             await showToast("Product deleted successfully", "success");
+            await router.push(`/category/${product.category}`)
           } catch (e) {
             console.error(e);
             showToast("Failed to delete the product", "danger");
