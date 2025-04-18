@@ -18,7 +18,7 @@ export const ProductDescription: FC<ProductDescriptionProps> = ({
   return (
     <>
       <Card className="h-100 shadow-sm">
-        <Card.Body className="d-flex flex-column justify-content-between h-100">
+        <Card.Body className="d-flex flex-column justify-content-end h-100">
           <div>
             <Card.Title className="fs-4">{title}</Card.Title>
             <StarRating {...rating} />
@@ -29,11 +29,11 @@ export const ProductDescription: FC<ProductDescriptionProps> = ({
           </Card.Subtitle>
           <Card.Text className="my-3">{description}</Card.Text>
           <div className="d-flex gap-3">
-            <Button className="btn btn-custom" onClick={handleEditClick}>
-              Edit
-            </Button>
             <Button variant="danger" onClick={handleDeleteClick}>
               Delete
+            </Button>
+            <Button className="btn btn-custom" onClick={handleEditClick}>
+              Edit
             </Button>
           </div>
         </Card.Body>
