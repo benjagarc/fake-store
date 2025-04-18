@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Container from "react-bootstrap/Container";
 import { Product } from "@/components/molecules/Card/interface";
 import ProductInformation from "@/components/organism/ProductInformation";
+import Breadcrumb from "@/components/molecules/Breadcrumb";
 
 type Params = {
   params: {
@@ -31,6 +32,7 @@ export default async function ProductPage({ params }: Params) {
 
   return (
     <Container className="py-4">
+      <Breadcrumb url={`/category/${product?.category}/${product.title}`} />
       <ProductInformation {...product} />
     </Container>
   );
