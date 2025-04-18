@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { Product } from "./interface";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
@@ -20,7 +20,7 @@ export const CardProduct: FC<Product> = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="h-100"
+          className="h-100 shadow-sm"
         >
           <Card className={`${styles.cardCustom} h-100`}>
             <div className={`${styles.containerImg} overflow-hidden`}>
