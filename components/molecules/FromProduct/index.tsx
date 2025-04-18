@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { Formik, Form } from "formik";
 import { FormProductType } from "./types";
 import Button from "react-bootstrap/esm/Button";
@@ -113,3 +113,5 @@ export const FromProducts: FC<FormProductType> = ({
     </>
   );
 };
+
+export default memo(FromProducts);
