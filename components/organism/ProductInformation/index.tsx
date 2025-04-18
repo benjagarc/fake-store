@@ -16,11 +16,11 @@ export const ProductInformation: FC<Product> = (product) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="h-100 shadow-sm py-5"
+        className="h-100 py-5"
       >
         <Row className="g-4">
           <Col md={6}>
-            <div className={`${stylesCard.containerImg} overflow-hidden`}>
+            <div className={`${stylesCard.containerImg} overflow-hidden shadow-sm`}>
               <Image
                 src={product?.image ?? ""}
                 alt={product?.title ?? ""}

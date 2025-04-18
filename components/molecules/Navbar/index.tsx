@@ -20,7 +20,7 @@ export const NavbarCustom = () => {
   }, []);
   return (
     <>
-      <Navbar fixed="top" expand="lg" className={`bg-body-tertiary ${styles.customNavbar}`}>
+      <Navbar fixed="top" expand="lg" className={`bg-body-tertiary ${styles.customNavbar} shadow-sm`}>
         <Container fluid>
           <Navbar.Brand href="/">FakeStore</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
