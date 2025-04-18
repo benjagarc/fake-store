@@ -17,14 +17,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ModalProvider>
-      <html lang="en">
-        <body>
+    <html lang="en">
+      <body>
+        <ModalProvider>
           <NavbarCustom />
           <Container className="py-4 pt-5 mt-5">{children}</Container>
           <ThemeToggle />
-        </body>
-      </html>
-    </ModalProvider>
+        </ModalProvider>
+      </body>
+    </html>
   );
 }
