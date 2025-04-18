@@ -4,20 +4,16 @@ import ProductInformation from "@/components/organism/ProductInformation";
 import Breadcrumb from "@/components/molecules/Breadcrumb";
 import { ProductInformationProps } from "@/components/organism/ProductInformation/interface";
 
-type Params = {
-  params: {
-    id: string;
-  };
-};
+type Params = Promise<{ id: string }>;
 
-export async function generateMetadata({ params }: Params) {
+export async function generateMetadata({ params }: { params: Params }) {
   const { id } = await params;
   return {
     title: `Producto #${id} | FakeStore`,
   };
 }
 
-export default async function ProductPage({ params }: Params) {
+export default async function ProductPage({ params }: { params: Params }) {
   const { id: idParams } = await params;
   const response = await fetch(
     `https://fakestoreapi.com/products/${idParams}`,
