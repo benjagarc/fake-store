@@ -27,7 +27,7 @@ export const ProductInformation: FC<Product> = (product) => {
       <FromProducts
         product={updatedProduct}
         onClose={hideModal}
-        form={"Editar productos"}
+        form={"Edit product"}
         validationSchema={validationSchemaEdit}
         onSubmit={async (values) => {
           try {
