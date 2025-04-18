@@ -8,7 +8,7 @@ import styles from "./index.module.scss";
 import Link from "next/link";
 
 export const CardProduct: FC<Product> = ({
-  // image,
+  // image, optiona image
   title,
   price,
   description,
