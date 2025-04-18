@@ -4,11 +4,13 @@ import { Product } from "@/components/molecules/Card/interface";
 import Row from "react-bootstrap/esm/Row";
 import Card from "@/components/molecules/Card";
 import { Params } from "./types";
+import Breadcrumb from "@/components/molecules/Breadcrumb";
+import Container from "react-bootstrap/esm/Container";
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { category } = await params;
   return {
-    title: `${category} | Fake Store`,
+    title: `${decodeURI(category)} | Fake Store`,
   };
 }
 
@@ -27,14 +29,15 @@ export default async function CategoryPage({ params }: Params) {
   const products: Product[] = await response.json();
 
   return (
-    <div>
-      <h1 className="mb-4 text-capitalize">{category}</h1>
+    <Container className="py-4">
+      <Breadcrumb url={`/${decodeURI(category)}`} />
+      <h1 className="mb-4 text-capitalize">{decodeURI(category)}</h1>
       <Row xs={2} sm={2} md={3} lg={4} className="g-4">
         {products.map((product) => (
           <Card key={product?.id} {...product} />
         ))}
       </Row>
-    </div>
+    </Container>
   );
 }
 
