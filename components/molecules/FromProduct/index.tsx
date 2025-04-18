@@ -11,9 +11,11 @@ export const FromProducts: FC<FormProductType> = ({
   onClose,
   validationSchema,
   onSubmit,
+  form,
 }) => {
   return (
     <>
+      <h4 className="mb-3">{form}</h4>
       <Formik
         initialValues={product}
         onSubmit={(values) => {
