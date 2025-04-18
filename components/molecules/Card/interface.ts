@@ -4,7 +4,6 @@ export interface Product {
   id: number;
   image: string;
   price: number;
-  rating: typeRating;
   title: string;
 }
 
