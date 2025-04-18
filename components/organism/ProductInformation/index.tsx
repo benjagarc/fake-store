@@ -13,9 +13,11 @@ import { FromProducts } from "@/components/molecules/FromProduct";
 import { validationSchemaEdit } from "./schema";
 import { deleteProductById, updateProductById } from "@/request/products";
 import MessageModal from "@/components/molecules/MessageModal";
+import { useToast } from "@/components/context/Toast";
 
 export const ProductInformation: FC<Product> = (product) => {
   const { showModal, hideModal } = useModal();
+  const { showToast } = useToast();
   const [updatedProduct, setUpdatedProduct] = useState<Product>(product);
 
   const displayForm = () => {
@@ -26,13 +28,20 @@ export const ProductInformation: FC<Product> = (product) => {
         form={"Editar productos"}
         validationSchema={validationSchemaEdit}
         onSubmit={async (values) => {
-          const { image, title, price, category, description } = values;
-          await updateProductById(
-            updatedProduct.id,
-            JSON.stringify({ image, title, price, category, description })
-          );
-          setUpdatedProduct((prev) => ({ ...prev, ...values }));
-          hideModal();
+          try {
+            const { image, title, price, category, description } = values;
+            await updateProductById(
+              updatedProduct.id,
+              JSON.stringify({ image, title, price, category, description })
+            );
+            setUpdatedProduct((prev) => ({ ...prev, ...values }));
+            await showToast("Product updated successfully", "success");
+          } catch (e) {
+            console.error(e);
+            showToast("Failed to update the product", "danger");
+          }
+
+          await hideModal();
         }}
       />
     );
@@ -45,8 +54,14 @@ export const ProductInformation: FC<Product> = (product) => {
         content="This action cannot be undone."
         handleClickCancel={hideModal}
         handleClickConfirm={async () => {
-          await deleteProductById(updatedProduct.id);
-          hideModal();
+          try {
+            await deleteProductById(updatedProduct.id);
+            await showToast("Product deleted successfully", "success");
+          } catch (e) {
+            console.error(e);
+            showToast("Failed to delete the product", "danger");
+          }
+          await hideModal();
         }}
       />
     );
