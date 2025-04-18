@@ -8,7 +8,7 @@ import styles from "./index.module.scss";
 import Link from "next/link";
 
 export const CardProduct: FC<Product> = ({
-  image,
+  // image,
   title,
   price,
   description,
@@ -25,9 +25,9 @@ export const CardProduct: FC<Product> = ({
         >
           <Link href={`/product/${id}`} className="no-decoration">
             <Card className={`${styles.cardCustom} h-100`}>
-              <div className={`${styles.containerImg} overflow-hidden`}>
+              {/* <div className={`${styles.containerImg} overflow-hidden`}>
                 <Card.Img src={image} alt={title} />
-              </div>
+              </div> */}
               <Card.Body className={`${styles.bodyBetween}`}>
                 <Card.Title className={`fs-6 ${styles.cardTitle}`}>
                   {title}
