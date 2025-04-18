@@ -1,6 +1,10 @@
 .customBreadcrum {
   & a {
-    color: var(---text);
+    color: var(--text);
+  }
+  
+  & li::before {
+    color: var(--text) !important;
   }
 
   & li:last-child{
