@@ -16,10 +16,11 @@ export const StarRating: FC<typeRating> = ({ rate, count }) => {
       }
     >
       <div
-        className="d-flex align-items-center gap-1 text-warning"
+        className="d-flex align-items-center gap-1 accent"
         role="img"
         aria-label={`${rate} estrellas`}
-      >
+        >
+        {rate}
         {[...Array(fullStars)].map((_, i) => (
           <FaStar key={`full-${i}`} />
         ))}
