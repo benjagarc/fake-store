@@ -1,8 +1,9 @@
 'use client';
 
 import { createContext, useContext, useState, ReactNode } from "react";
-import { Modal } from "react-bootstrap";
+
 import { ModalContextType } from "./types";
+import Modal from "react-bootstrap/esm/Modal";
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
