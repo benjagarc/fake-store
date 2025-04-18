@@ -24,7 +24,7 @@ export const getCategories = async () => {
 
 export const updateProductById = async (id: number, body: string) => {
   const response = await fetch(`${API_URL}/products/${id}`, {
-    method: "PATCH",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
@@ -41,5 +41,16 @@ export const deleteProductById = async (id: number) => {
     },
   });
 
+  return handleResponse(response);
+};
+
+export const createProduct = async (body: string) => {
+  const response = await fetch(`${API_URL}/products`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body,
+  });
   return handleResponse(response);
 };
