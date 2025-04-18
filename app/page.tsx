@@ -8,13 +8,14 @@ import Card from "@/components/molecules/Card";
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
+      await setLoading((prev) => !prev);
       const data = await getAllProducts();
       setProducts(() => data);
-      setLoading((prev) => !prev);
+      await setLoading((prev) => !prev);
     };
     getData();
   }, []);
