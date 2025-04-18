@@ -8,7 +8,7 @@ import NavDropdown from "react-bootstrap/esm/NavDropdown";
 import Navbar from "react-bootstrap/Navbar";
 import styles from "./index.module.scss";
 
-export const NavbarCustom = () => {
+export const CustomNavbar = () => {
   const [categories, setCategories] = useState<string[]>([]);
   useEffect(() => {
     const fetchCategories = async () => {
@@ -20,7 +20,11 @@ export const NavbarCustom = () => {
   }, []);
   return (
     <>
-      <Navbar fixed="top" expand="lg" className={`bg-body-tertiary ${styles.customNavbar} shadow-sm`}>
+      <Navbar
+        fixed="top"
+        expand="lg"
+        className={`bg-body-tertiary ${styles.customNavbar} shadow-sm`}
+      >
         <Container fluid>
           <Navbar.Brand href="/">FakeStore</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -49,4 +53,4 @@ export const NavbarCustom = () => {
   );
 };
 
-export default memo(NavbarCustom);
+export default memo(CustomNavbar);
