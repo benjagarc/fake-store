@@ -4,6 +4,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 
 import { ModalContextType } from "./types";
 import Modal from "react-bootstrap/esm/Modal";
+import styles from './index.module.scss';
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
@@ -26,7 +27,7 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
       {children}
 
       <Modal show={visible} onHide={hideModal} centered>
-        <Modal.Body>{content}</Modal.Body>
+        <Modal.Body className={`${styles.customBody}`}>{content}</Modal.Body>
       </Modal>
     </ModalContext.Provider>
   );
