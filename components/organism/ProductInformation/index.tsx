@@ -20,7 +20,7 @@ export const ProductInformation: FC<Product> = (product) => {
       >
         <Row className="g-4">
           <Col md={6}>
-            <div className={`${stylesCard.containerImg} overflow-hidden shadow-sm`}>
+            <div className={`${stylesCard.containerImg} overflow-hidden shadow-sm h-100`}>
               <Image
                 src={product?.image ?? ""}
                 alt={product?.title ?? ""}
