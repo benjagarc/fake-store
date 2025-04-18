@@ -22,13 +22,24 @@ export const getCategories = async () => {
   return handleResponse(response);
 };
 
-export const updateProductById = async (id: number | string, body: string) => {
+export const updateProductById = async (id: number, body: string) => {
   const response = await fetch(`${API_URL}/products/${id}`, {
-    method: "PUT",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
     body,
   });
+  return handleResponse(response);
+};
+
+export const deleteProductById = async (id: number) => {
+  const response = await fetch(`${API_URL}/products/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
   return handleResponse(response);
 };
