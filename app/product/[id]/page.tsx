@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Container from "react-bootstrap/Container";
 import { Product } from "@/components/molecules/Card/interface";
-import { ProductInformation } from "@/components/organism/ProductInformation";
+import ProductInformation from "@/components/organism/ProductInformation";
 
 type Params = {
   params: {

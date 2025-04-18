@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import stylesCard from "@/components/molecules/Card/index.module.scss";
 import ProductDescription from "@/components/molecules/ProductDescription";
-import { FC } from "react";
+import { FC, memo } from "react";
 
 export const ProductInformation: FC<Product> = (product) => {
   return (
@@ -29,3 +29,5 @@ export const ProductInformation: FC<Product> = (product) => {
     </>
   );
 };
+
+export default memo(ProductInformation);
