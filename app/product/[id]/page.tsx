@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import Container from "react-bootstrap/Container";
-import { Product } from "@/components/molecules/Card/interface";
 import ProductInformation from "@/components/organism/ProductInformation";
 import Breadcrumb from "@/components/molecules/Breadcrumb";
+import { ProductInformationProps } from "@/components/organism/ProductInformation/interface";
 
 type Params = {
   params: {
@@ -28,7 +28,7 @@ export default async function ProductPage({ params }: Params) {
 
   if (!response.ok) return notFound();
 
-  const product: Product = await response.json();
+  const product: ProductInformationProps = await response.json();
 
   return (
     <Container className="py-4">

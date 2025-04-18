@@ -1,6 +1,5 @@
 "use client";
 
-import { Product } from "@/components/molecules/Card/interface";
 import Image from "next/image";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -15,11 +14,13 @@ import { deleteProductById, updateProductById } from "@/request/products";
 import MessageModal from "@/components/molecules/MessageModal";
 import { useToast } from "@/components/context/Toast";
 import { useRouter } from "next/navigation";
+import { ProductInformationProps } from "./interface";
 
-export const ProductInformation: FC<Product> = (product) => {
+export const ProductInformation: FC<ProductInformationProps> = (product) => {
   const { showModal, hideModal } = useModal();
   const { showToast } = useToast();
-  const [updatedProduct, setUpdatedProduct] = useState<Product>(product);
+  const [updatedProduct, setUpdatedProduct] =
+    useState<ProductInformationProps>(product);
   const router = useRouter();
 
   const displayForm = () => {
