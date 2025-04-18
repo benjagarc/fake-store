@@ -30,7 +30,7 @@ export const FromProducts: FC<FormProductType> = ({
               <FormLabel>Title</FormLabel>
               <FormControl
                 name="title"
-                value={values.title}  
+                value={values.title}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 isInvalid={touched.title && !!errors.title}
