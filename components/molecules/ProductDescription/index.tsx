@@ -12,7 +12,8 @@ export const ProductDescription: FC<ProductDescriptionProps> = ({
   description,
   rating,
   price,
-  onClick,
+  handleEditClick,
+  handleDeleteClick,
 }) => {
   return (
     <>
@@ -27,10 +28,14 @@ export const ProductDescription: FC<ProductDescriptionProps> = ({
             {category}
           </Card.Subtitle>
           <Card.Text className="my-3">{description}</Card.Text>
-          <div></div>
-          <Button className="btn btn-custom" onClick={() => onClick()}>
-            Edit
-          </Button>
+          <div className="d-flex gap-3">
+            <Button className="btn btn-custom" onClick={handleEditClick}>
+              Edit
+            </Button>
+            <Button variant="danger" onClick={handleDeleteClick}>
+              Delete
+            </Button>
+          </div>
         </Card.Body>
       </Card>
     </>

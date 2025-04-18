@@ -1,5 +1,6 @@
 import { Product } from "../Card/interface";
 
 export interface ProductDescriptionProps extends Product {
-    onClick: () => void;
-} 
+  handleEditClick: () => void;
+  handleDeleteClick: () => void;
+}
