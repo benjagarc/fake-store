@@ -4,7 +4,7 @@ import "@/styles/_theme.scss";
 import ThemeToggle from "@/components/atoms/ThemeToggle";
 import CustomNavbar from "@/components/molecules/Navbar";
 import Container from "react-bootstrap/Container";
-import { ModalProvider } from "@/components/context";
+import { ModalProvider } from "@/components/context/Modal";
 
 export const metadata: Metadata = {
   title: "Create Next App",

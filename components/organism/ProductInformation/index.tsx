@@ -8,7 +8,7 @@ import stylesCard from "@/components/molecules/Card/index.module.scss";
 import ProductDescription from "@/components/molecules/ProductDescription";
 import { FC, memo, useState } from "react";
 import { motion } from "framer-motion";
-import { useModal } from "@/components/context";
+import { useModal } from "@/components/context/Modal";
 import { FromProducts } from "@/components/molecules/FromProduct";
 import { validationSchemaEdit } from "./schema";
 import { deleteProductById, updateProductById } from "@/request/products";
