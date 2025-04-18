@@ -12,14 +12,14 @@ export const StarRating: FC<typeRating> = ({ rate, count }) => {
     <OverlayTrigger
       placement="top"
       overlay={
-        <Tooltip id="rating-tooltip">{`${rate} de 5 (${count} reseñas)`}</Tooltip>
+        <Tooltip id="rating-tooltip">{`${rate} of 5 (${count} reviews)`}</Tooltip>
       }
     >
       <div
         className="d-flex align-items-center gap-1 accent"
         role="img"
         aria-label={`${rate} estrellas`}
-        >
+      >
         {rate}
         {[...Array(fullStars)].map((_, i) => (
           <FaStar key={`full-${i}`} />
@@ -28,7 +28,7 @@ export const StarRating: FC<typeRating> = ({ rate, count }) => {
         {[...Array(emptyStars)].map((_, i) => (
           <FaRegStar key={`empty-${i}`} />
         ))}
-        <small className="text-muted ms-1">({count})</small>
+        <small className="text-muted ms-1 accent">({count})</small>
       </div>
     </OverlayTrigger>
   );
