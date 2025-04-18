@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
-import styles from './index.module.scss'
+import styles from "./index.module.scss";
 
 export const ThemeToggle = () => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -23,8 +23,11 @@ export const ThemeToggle = () => {
   };
 
   return (
-    <Button className={`btn btn-custom ${styles.toggleButton}`} onClick={toggleTheme}>
-      {theme === "light" ? "🌙 Modo Oscuro" : "☀️ Modo Claro"}
+    <Button
+      className={`btn btn-custom ${styles.toggleButton}`}
+      onClick={toggleTheme}
+    >
+      {theme === "light" ? "🌙 Switch to Dark Mode" : "☀️ Switch to Light Mode"}
     </Button>
   );
 };
