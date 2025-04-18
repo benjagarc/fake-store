@@ -59,7 +59,7 @@ export const ProductInformation: FC<Product> = (product) => {
           try {
             await deleteProductById(updatedProduct.id);
             await showToast("Product deleted successfully", "success");
-            await router.push(`/category/${product.category}`)
+            await router.push(`/category/${product.category}`);
           } catch (e) {
             console.error(e);
             showToast("Failed to delete the product", "danger");
