@@ -20,6 +20,7 @@ export const ProductInformation: FC<Product> = (product) => {
               width={400}
               height={400}
               className="img-fluid"
+              priority
             />
           </div>
         </Col>
