@@ -8,8 +8,36 @@ import stylesCard from "@/components/molecules/Card/index.module.scss";
 import ProductDescription from "@/components/molecules/ProductDescription";
 import { FC, memo } from "react";
 import { motion } from "framer-motion";
+import { useModal } from "@/components/context";
+import { FromProducts } from "@/components/molecules/FromProduct";
+import { validationSchemaEdit } from "./schema";
+import { updateProductById } from "@/request/products";
 
 export const ProductInformation: FC<Product> = (product) => {
+  const { showModal, hideModal } = useModal();
+
+
+  const displayForm = () => {
+    showModal(
+      <FromProducts
+        product={product}
+        onClose={hideModal}
+        form={"Editar productos"}
+        validationSchema={validationSchemaEdit}
+        onSubmit={async (values) => {
+          const { image, title, price, category, description } = values;
+          await updateProductById(
+            product.id,
+            JSON.stringify({ image, title, price, category, description })
+          );
+          hideModal();
+        }}
+      />
+    );
+  };
+
+
+
   return (
     <>
       <motion.div
@@ -33,8 +61,9 @@ export const ProductInformation: FC<Product> = (product) => {
               />
             </div>
           </Col>
-
-          <Col md={6}>{<ProductDescription {...product} />}</Col>
+          <Col md={6}>
+            {<ProductDescription {...product} onClick={displayForm} />}
+          </Col>
         </Row>
       </motion.div>
     </>

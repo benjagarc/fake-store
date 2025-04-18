@@ -1,16 +1,18 @@
 "use client";
 
 import { FC, memo } from "react";
-import { Product } from "../Card/interface";
 import Card from "react-bootstrap/esm/Card";
 import { StarRating } from "@/components/atoms/StartRating";
+import Button from "react-bootstrap/esm/Button";
+import { ProductDescriptionProps } from "./interface";
 
-export const ProductDescription: FC<Product> = ({
+export const ProductDescription: FC<ProductDescriptionProps> = ({
   title,
   category,
   description,
   rating,
   price,
+  onClick,
 }) => {
   return (
     <>
@@ -21,12 +23,14 @@ export const ProductDescription: FC<Product> = ({
             <StarRating {...rating} />
             <p className="h5 fw-bold my-2">${price}</p>
           </div>
-            <Card.Subtitle className="mb-2 mt-4 text-muted text-capitalize">
-              {category}
-            </Card.Subtitle>
-            <Card.Text className="my-3">{description}</Card.Text>
-          <div>
-          </div>
+          <Card.Subtitle className="mb-2 mt-4 text-muted text-capitalize">
+            {category}
+          </Card.Subtitle>
+          <Card.Text className="my-3">{description}</Card.Text>
+          <div></div>
+          <Button className="btn btn-custom" onClick={() => onClick()}>
+            Edit
+          </Button>
         </Card.Body>
       </Card>
     </>
