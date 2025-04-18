@@ -101,7 +101,7 @@ export const FromProducts: FC<FormProductType> = ({
               <Button variant="secondary" onClick={onClose}>
                 Cancel
               </Button>
-              <Button type="submit" variant="btn btn-custom">
+              <Button type="submit" className="btn btn-custom btn btn-primary">
                 Save
               </Button>
             </div>
