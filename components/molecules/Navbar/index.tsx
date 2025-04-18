@@ -1,15 +1,24 @@
 "use client";
 
-import { getCategories } from "@/request/products";
+import { createProduct, getCategories } from "@/request/products";
 import { memo, useEffect, useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Nav from "react-bootstrap/esm/Nav";
 import NavDropdown from "react-bootstrap/esm/NavDropdown";
 import Navbar from "react-bootstrap/Navbar";
 import styles from "./index.module.scss";
+import Button from "react-bootstrap/esm/Button";
+import { usePathname } from "next/navigation";
+import { useModal } from "@/components/context/Modal";
+import { validationSchemaCreate } from "./schema";
+import { FromProducts } from "../FromProduct";
+import { useToast } from "@/components/context/Toast";
 
 export const CustomNavbar = () => {
+  const pathname = usePathname();
   const [categories, setCategories] = useState<string[]>([]);
+  const { showModal, hideModal } = useModal();
+  const { showToast } = useToast();
   useEffect(() => {
     const fetchCategories = async () => {
       const data = await getCategories();
@@ -18,6 +27,34 @@ export const CustomNavbar = () => {
 
     fetchCategories();
   }, []);
+
+  const displayForm = () => {
+    showModal(
+      <FromProducts
+        product={{
+          title: "",
+          category: "",
+          description: "",
+          id: 0,
+          image: "",
+          price: 0,
+        }}
+        onClose={hideModal}
+        form="Create product"
+        validationSchema={validationSchemaCreate}
+        onSubmit={async (values) => {
+          try {
+            await createProduct(JSON.stringify({ values }));
+            await showToast("Product created successfully", "success");
+          } catch (e) {
+            console.log(e);
+            showToast("Failed to update the product", "danger");
+          }
+          await hideModal();
+        }}
+      />
+    );
+  };
   return (
     <>
       <Navbar
@@ -46,6 +83,11 @@ export const CustomNavbar = () => {
                   ))}
               </NavDropdown>
             </Nav>
+            {pathname === "/" && (
+              <Button className="btn btn-custom" onClick={displayForm}>
+                Add Product
+              </Button>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>
