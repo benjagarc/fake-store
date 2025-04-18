@@ -1,0 +1,9 @@
+.customBreadcrum {
+  & a {
+    color: var(---text);
+  }
+
+  & li:last-child{
+    color: var(--accent-hover) !important;
+  }
+}
