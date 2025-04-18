@@ -30,7 +30,7 @@ export const NavbarCustom = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <NavDropdown title="Categorias" id="navbarScrollingDropdown">
+              <NavDropdown title="Categories" id="navbarScrollingDropdown">
                 {categories.length > 0 &&
                   categories?.map((category) => (
                     <NavDropdown.Item
