@@ -26,7 +26,7 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
     <ToastContext.Provider value={{ showToast }}>
       {children}
       <ToastContainer
-        position="top-end"
+        position="bottom-start"
         className="p-3"
         style={{ zIndex: 9999 }}
       >
