@@ -11,4 +11,23 @@
   & > div div > a:hover {
     background: var(--bg);
   }
+
+  [aria-label="Toggle navigation"] {
+    border-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.008) 0px 0px 0px 0.036726px;
+    &::before,
+    &::after,
+    span {
+      content: "";
+      display: block;
+      height: 2px;
+      background-color: var(--text);
+      margin: 5px 0;
+      transition: background-color 0.3s ease;
+    }
+
+    span {
+      background-color: var(--text);
+    }
+  }
 }
