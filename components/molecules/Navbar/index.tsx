@@ -39,12 +39,20 @@ export const CustomNavbar = () => {
           image: "",
           price: 0,
         }}
+        categories={categories}
         onClose={hideModal}
         form="Create product"
         validationSchema={validationSchemaCreate}
         onSubmit={async (values) => {
           try {
-            await createProduct(JSON.stringify({ values }));
+            const validateValues = !values.image
+              ? {
+                  ...values,
+                  image:
+                    "https://cdn.arihantbooks.com/assets/ProductImage/product-not-found.png",
+                }
+              : values;
+            await createProduct(JSON.stringify({ validateValues }));
             await showToast("Product created successfully", "success");
           } catch (e) {
             console.log(e);
