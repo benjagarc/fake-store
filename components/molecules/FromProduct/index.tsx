@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, useState } from "react";
 import { Formik, Form } from "formik";
 import { FormProductType } from "./types";
 import Button from "react-bootstrap/esm/Button";
@@ -6,6 +6,7 @@ import FormGroup from "react-bootstrap/FormGroup";
 import FormLabel from "react-bootstrap/FormLabel";
 import FormControl from "react-bootstrap/FormControl";
 import FormSelect from "react-bootstrap/FormSelect";
+import Spinner from "react-bootstrap/esm/Spinner";
 
 export const FromProducts: FC<FormProductType> = ({
   product,
@@ -15,12 +16,14 @@ export const FromProducts: FC<FormProductType> = ({
   form,
   categories,
 }) => {
+  const [loading, setLoading] = useState(false);
   return (
     <>
       <h4 className="mb-3">{form}</h4>
       <Formik
         initialValues={product}
         onSubmit={(values) => {
+          setLoading((prev) => !prev);
           onSubmit(values);
         }}
         validationSchema={validationSchema}
@@ -108,11 +111,35 @@ export const FromProducts: FC<FormProductType> = ({
             </FormGroup>
 
             <div className="d-flex justify-content-end gap-2">
-              <Button variant="secondary" onClick={onClose}>
-                Cancel
+              <Button disabled={loading} variant="secondary" onClick={onClose}>
+                {loading ? (
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  "Cancel"
+                )}
               </Button>
-              <Button type="submit" className="btn btn-custom btn btn-primary">
-                Save
+              <Button
+                disabled={loading}
+                type="submit"
+                className="btn btn-custom btn btn-primary"
+              >
+                {loading ? (
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  "Save"
+                )}
               </Button>
             </div>
           </Form>
