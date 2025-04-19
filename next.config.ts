@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     API_URL: process.env.API_URL,
   },
   images: {
-    remotePatterns: [new URL("https://fakestoreapi.com/img/**")],
+    remotePatterns: [new URL("https://fakestoreapi.com/img/**"),new URL("https://cdn.arihantbooks.com/assets/ProductImage/**")],
   },
 };
 
