@@ -6,4 +6,5 @@ export type FormProductType = {
   form: string;
   validationSchema: unknown;
   onSubmit: (product: Partial<Product>) => void;
+  categories: string[];
 };

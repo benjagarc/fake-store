@@ -5,6 +5,7 @@ import Button from "react-bootstrap/esm/Button";
 import FormGroup from "react-bootstrap/FormGroup";
 import FormLabel from "react-bootstrap/FormLabel";
 import FormControl from "react-bootstrap/FormControl";
+import FormSelect from "react-bootstrap/FormSelect";
 
 export const FromProducts: FC<FormProductType> = ({
   product,
@@ -12,6 +13,7 @@ export const FromProducts: FC<FormProductType> = ({
   validationSchema,
   onSubmit,
   form,
+  categories,
 }) => {
   return (
     <>
@@ -73,13 +75,19 @@ export const FromProducts: FC<FormProductType> = ({
 
             <FormGroup className="mb-3">
               <FormLabel>Category</FormLabel>
-              <FormControl
+              <FormSelect
                 name="category"
                 value={values.category}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 isInvalid={touched.category && !!errors.category}
-              />
+              >
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </FormSelect>
               <FormControl.Feedback type="invalid">
                 {errors.category}
               </FormControl.Feedback>
