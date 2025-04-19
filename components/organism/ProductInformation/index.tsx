@@ -5,12 +5,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import stylesCard from "@/components/molecules/Card/index.module.scss";
 import ProductDescription from "@/components/molecules/ProductDescription";
-import { FC, memo, useState } from "react";
+import { FC, memo, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useModal } from "@/components/context/Modal";
 import { FromProducts } from "@/components/molecules/FromProduct";
 import { validationSchemaEdit } from "./schema";
-import { deleteProductById, updateProductById } from "@/request/products";
+import {
+  deleteProductById,
+  updateProductById,
+  getCategories,
+} from "@/request/products";
 import MessageModal from "@/components/molecules/MessageModal";
 import { useToast } from "@/components/context/Toast";
 import { useRouter } from "next/navigation";
@@ -19,9 +23,19 @@ import { ProductInformationProps } from "./interface";
 export const ProductInformation: FC<ProductInformationProps> = (product) => {
   const { showModal, hideModal } = useModal();
   const { showToast } = useToast();
+  const [categories, setCategories] = useState<string[]>([]);
   const [updatedProduct, setUpdatedProduct] =
     useState<ProductInformationProps>(product);
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const data = await getCategories();
+      setCategories(data);
+    };
+
+    fetchCategories();
+  }, []);
 
   const displayForm = () => {
     showModal(
@@ -30,6 +44,7 @@ export const ProductInformation: FC<ProductInformationProps> = (product) => {
         onClose={hideModal}
         form={"Edit product"}
         validationSchema={validationSchemaEdit}
+        categories={categories}
         onSubmit={async (values) => {
           try {
             const { image, title, price, category, description } = values;
