@@ -30,7 +30,8 @@ body {
 
   &:hover,
   &:focus,
-  &:active {
+  &:active,
+  &:disabled {
     background-color: var(--accent-hover) !important;
   }
 }
